@@ -1,0 +1,10 @@
+GET http://localhost:3000/products
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "title": "Série, o filme do node",
+    "description": "Primeiro video",
+    "duration": 100
+}
