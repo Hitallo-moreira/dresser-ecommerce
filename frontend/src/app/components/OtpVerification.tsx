@@ -19,6 +19,7 @@ const OTPVerification: React.FC<{ email: string }> = ({ email }) => {
 
   const onSubmit: SubmitHandler<OTPFormValues> = async (data) => {
     const result = await verifyOTP(data);
+    console.log(data.email);
   };
 
   return (

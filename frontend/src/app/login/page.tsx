@@ -21,31 +21,32 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className='sm:w-full py-8 px-4 md:flex flex-col items-center'>
+    <div className='sm:w-full py-4 px-4 md:flex bg-custom-gradient h-screen'>
+      <div className='w-full lg:w-3/4 flex flex-col items-center justify-center h-4/5'>
         <h1 className='text-2xl text-center font-bold'>Fazer Login</h1>
-        <div className='sm:w-full md:w-1/3'>
-            <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
+        <div className='w-full md:w-2/4'>
+          <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
             <FormInput
-                name="email"
-                control={control}
-                label="Email"
-                type="email"
-                placeholder="Digite seu email"
-                rules={{
+              name="email"
+              control={control}
+              label="Email"
+              type="email"
+              placeholder="Digite seu email"
+              rules={{
                 required: 'O campo email é obrigatório',
                 pattern: {
-                    value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                    message: 'Email inválido',
+                  value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                  message: 'Email inválido',
                 },
-                }}
+              }}
             />
             <FormInput
-                name="password"
-                control={control}
-                label="Senha"
-                type="password"
-                placeholder="Digite sua senha"
-                rules={{ required: 'O campo senha é obrigatório' }}
+              name="password"
+              control={control}
+              label="Senha"
+              type="password"
+              placeholder="Digite sua senha"
+              rules={{ required: 'O campo senha é obrigatório' }}
             />
             <FormButton type='submit'>Entrar</FormButton>
             {error && <p className="text-red-500">{error}</p>}
@@ -53,8 +54,12 @@ const Login: React.FC = () => {
               text="Ainda não possui uma conta?"
               href="/registro"
             />
-            </form>
+          </form>
         </div>
+      </div>
+      <div className='hidden lg:block w-3/5 bg-black rounded-2xl'>
+        hi
+      </div>
     </div>
   );
 };

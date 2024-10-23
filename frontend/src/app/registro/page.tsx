@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import FormLink from '../components/FormLink';
-import OTPVerification from '../components/OtpVerification'; // Import OTP Component
+import OTPVerification from '../components/OtpVerification';
 import { useAuth } from '../hooks/useAuth';
 
 interface FormValues {
@@ -19,8 +19,8 @@ const Register: React.FC = () => {
   const { handleSubmit, control, getValues, setError } = useForm<FormValues>();
   const { register, error, showOtpField } = useAuth();
   
-  const [isRegistered, setIsRegistered] = useState(false); // Track registration status
-  const [email, setEmail] = useState(""); // Store registered email
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [email, setEmail] = useState("");
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     if (data.password !== data.confirmPassword) {
