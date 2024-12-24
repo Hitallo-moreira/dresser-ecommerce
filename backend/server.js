@@ -49,20 +49,6 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const mailOptions = {
-    from: '"Your App Name" <no-reply@yourapp.com>',
-    to: 'test@example.com',
-    subject: 'Test Email',
-    text: 'This is a test email sent using Mailtrap.',
-};
-
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        return console.log(error);
-    }
-    console.log('Message sent: %s', info.messageId);
-});
-
 app.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -71,17 +57,13 @@ app.post('/register', async (req, res) => {
     }
 
     try {
-        // Create user in the database
         await database.create({ name, email, password });
 
-        // Generate OTP
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        const otpExpiresAt = new Date(Date.now() + 15 * 60 * 1000); // OTP valid for 15 minutes
+        const otpExpiresAt = new Date(Date.now() + 15 * 60 * 1000);
 
-        // Save OTP and expiration time to the database
         await sql`UPDATE users SET otp = ${otp}, otp_expires_at = ${otpExpiresAt} WHERE email = ${email}`;
 
-        // Send OTP via email
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: email,
@@ -116,7 +98,6 @@ app.post('/verify-otp', async (req, res) => {
             return res.status(400).send('OTP inválido ou expirado.');
         }
 
-        // If OTP is valid, you can proceed with activating the user or any other logic
         res.status(200).send('OTP verificado com sucesso.');
     } catch (err) {
         console.error('Erro ao verificar OTP:', err);

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -15,9 +15,15 @@ interface FormValues {
 const Login: React.FC = () => {
   const { handleSubmit, control } = useForm<FormValues>();
   const { login, error } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    await login(data);
+    setIsLoading(true);
+    try {
+      await login(data);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -48,7 +54,9 @@ const Login: React.FC = () => {
               placeholder="Digite sua senha"
               rules={{ required: 'O campo senha é obrigatório' }}
             />
-            <FormButton type='submit'>Entrar</FormButton>
+            <FormButton type="submit" isLoading={isLoading}>
+              Entrar
+            </FormButton>
             {error && <p className="text-red-500">{error}</p>}
             <FormLink
               text="Ainda não possui uma conta?"

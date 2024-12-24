@@ -21,8 +21,10 @@ const Register: React.FC = () => {
   
   const [isRegistered, setIsRegistered] = useState(false);
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setIsLoading(true);
     if (data.password !== data.confirmPassword) {
       setError('confirmPassword', {
         type: 'manual',
@@ -35,6 +37,7 @@ const Register: React.FC = () => {
       setIsRegistered(true);
       setEmail(data.email);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -92,7 +95,7 @@ const Register: React.FC = () => {
                     value === getValues('password') || 'As senhas digitadas não coincidem',
                 }}
               />
-              <FormButton type='submit'>Criar Conta</FormButton>
+              <FormButton type='submit' isLoading={isLoading}>Criar Conta</FormButton>
               {error && <p className="text-red-500">{error}</p>}
               <FormLink
                 text="Já possui uma conta?"
@@ -104,7 +107,7 @@ const Register: React.FC = () => {
           <div className='flex flex-col items-center py-8 px-4'>
             <h1 className='text-2xl pb-8 text-center font-bold'>Digite o código recebido por email</h1>
             <OTPVerification email={email} />
-            <FormButton type='submit'>Criar Conta</FormButton>
+            <FormButton type='submit' isLoading={isLoading}>Criar Conta</FormButton>
           </div>
         )}
       </div>
