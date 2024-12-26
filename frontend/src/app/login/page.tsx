@@ -6,6 +6,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import FormLink from '../components/FormLink';
 import { useAuth } from '../hooks/useAuth';
+import Logo from '../components/Logo';
 
 interface FormValues {
   email: string;
@@ -27,8 +28,9 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className='sm:w-full py-4 px-4 md:flex bg-custom-gradient h-screen'>
-      <div className='w-full lg:w-3/4 flex flex-col items-center justify-center h-4/5'>
+    <div className='flex flex-col justify-center items-center sm:w-full py-4 px-4 md:flex-column bg-custom-gradient h-screen'>
+      <Logo margin='2rem 0 6rem 0' />
+      <div className='w-full lg:w-3/4 flex flex-col items-center h-4/5'>
         <h1 className='text-2xl text-center font-bold'>Fazer Login</h1>
         <div className='w-full md:w-2/4'>
           <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
@@ -64,9 +66,6 @@ const Login: React.FC = () => {
             />
           </form>
         </div>
-      </div>
-      <div className='hidden lg:block w-3/5 bg-black rounded-2xl'>
-        hi
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import FormButton from '../components/FormButton';
 import FormLink from '../components/FormLink';
 import OTPVerification from '../components/OtpVerification';
 import { useAuth } from '../hooks/useAuth';
+import Logo from '../components/Logo';
 
 interface FormValues {
   name: string;
@@ -42,6 +43,7 @@ const Register: React.FC = () => {
 
   return (
     <div className='sm:w-full py-8 px-4 md:flex flex-col items-center'>
+      <Logo margin='2rem 0 6rem 0' />
       <div className='sm:w-full md:w-1/3'>
         {!showOtpField ? (
           <>
