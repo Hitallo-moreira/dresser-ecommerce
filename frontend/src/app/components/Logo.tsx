@@ -7,7 +7,7 @@ interface LogoProps {
 export default function Logo({ margin }: LogoProps) {
   return (
     <div style={{margin}}>
-        <span className='text-black text-4xl font-bold'>Dresser.</span>
+        <span className='text-black text-4xl font-bold hover:cursor-pointer'>Dresser.</span>
     </div>
   )
 }

@@ -29,7 +29,8 @@ const Login: React.FC = () => {
 
   return (
     <div className='flex flex-col justify-center items-center sm:w-full py-4 px-4 md:flex-column bg-custom-gradient h-screen'>
-      <Logo margin='2rem 0 6rem 0' />
+      <Logo margin='2rem 0 1rem 0' />
+      <span className='mb-24 mx-0'>Onde moda e você se encontram.</span>
       <div className='w-full lg:w-3/4 flex flex-col items-center h-4/5'>
         <h1 className='text-2xl text-center font-bold'>Fazer Login</h1>
         <div className='w-full md:w-2/4'>

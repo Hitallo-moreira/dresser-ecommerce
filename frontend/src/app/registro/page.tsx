@@ -43,7 +43,8 @@ const Register: React.FC = () => {
 
   return (
     <div className='sm:w-full py-8 px-4 md:flex flex-col items-center'>
-      <Logo margin='2rem 0 6rem 0' />
+      <Logo margin='2rem 0 1rem 0' />
+      <span className='mb-24 mx-0'>Onde moda e você se encontram.</span>
       <div className='sm:w-full md:w-1/3'>
         {!showOtpField ? (
           <>
