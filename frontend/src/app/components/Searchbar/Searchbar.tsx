@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBar: React.FC = () => {
   return (
-    <div className="p-3 overflow-hidden w-[40px] h-[40px] hover:w-[270px] bg-[#e2e2e2] border border-[#949494] rounded-full flex group items-center hover:duration-300 duration-300">
+    <div className="p-3 overflow-hidden w-[40px] h-[40px] hover:w-[270px] border border-[#949494] rounded-full flex group items-center hover:duration-300 duration-300">
       <div className="flex items-center justify-center w-[22px] h-[22px] text-[#000]">
         <svg
           xmlns="http://www.w3.org/2000/svg"

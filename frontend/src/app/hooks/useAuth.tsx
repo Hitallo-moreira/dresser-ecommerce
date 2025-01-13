@@ -1,4 +1,6 @@
-import { useState } from 'react';
+'use client';
+
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface AuthData {
@@ -13,6 +15,7 @@ export const useAuth = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showOtpField, setShowOtpField] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const verifyOTP = async (data: { otp: string }) => {
     setError(null);
@@ -122,9 +125,17 @@ export const useAuth = () => {
     }
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   const logout = () => {
     localStorage.removeItem('token');
     router.push('/login');
+    setIsAuthenticated(false);
   };
 
   const requestPasswordReset = async (email: string) => {
@@ -148,5 +159,5 @@ export const useAuth = () => {
   } 
 
 
-  return { login, register, logout, requestPasswordReset, error, isLoading, verifyOTP, showOtpField, setShowOtpField };
+  return { login, register, logout, requestPasswordReset, error, isLoading, verifyOTP, showOtpField, setShowOtpField, isAuthenticated };
 };
