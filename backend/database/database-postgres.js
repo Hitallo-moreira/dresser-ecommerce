@@ -49,6 +49,10 @@ class DatabasePostgres {
     async deleteResetToken(email) {
         await sql`UPDATE users SET reset_token = NULL WHERE email = ${email}`;
     }
+    async getCategories() {
+        const categories = await sql`SELECT id, name, slug FROM categories ORDER BY name ASC`;
+        return categories;
+    }
 }
 
 module.exports = DatabasePostgres;

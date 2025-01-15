@@ -167,6 +167,8 @@ app.get('/users', async (req, res) => {
     }
 });
 
+app.use('/api/categories', require('./pages/api/categories'));
+
 app.listen({
     port: 3000,
 })
