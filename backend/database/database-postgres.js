@@ -50,7 +50,7 @@ class DatabasePostgres {
         await sql`UPDATE users SET reset_token = NULL WHERE email = ${email}`;
     }
     async getCategories() {
-        const categories = await sql`SELECT id, name, slug FROM categories ORDER BY name ASC`;
+        const categories = await sql`SELECT id, name, slug FROM categories ORDER BY id ASC`;
         return categories;
     }
 }
