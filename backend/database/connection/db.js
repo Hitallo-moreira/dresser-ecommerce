@@ -1,26 +1,17 @@
-const postgres = require('postgres');
-require('dotenv').config();
+// require("dotenv").config();
 
-let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+// const http = require("http");
+// const { neon } = require("@neondatabase/serverless");
 
-const sql = postgres({
-  host: PGHOST,
-  database: PGDATABASE,
-  username: PGUSER,
-  password: PGPASSWORD,
-  port: 5432,
-  ssl: 'require',
-  connection: {
-    options: `project=${ENDPOINT_ID}`,
-    ssl: 'require',
-  },
-});
+// const sql = neon(process.env.DATABASE_URL);
 
-async function getPgVersion() {
-  const result = await sql`select version()`;
-  console.log(result);
-}
+// const requestHandler = async (req, res) => {
+//   const result = await sql`SELECT version()`;
+//   const { version } = result[0];
+//   res.writeHead(200, { "Content-Type": "text/plain" });
+//   res.end(version);
+// };
 
-getPgVersion();
-
-module.exports = { sql };
+// http.createServer(requestHandler).listen(8000, () => {
+//   console.log("Server running at http://localhost:8000");
+// });

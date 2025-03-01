@@ -14,7 +14,7 @@ const Categories = () => {
     useEffect(() => {
       const fetchCategories = async () => {
         try {
-          const res = await fetch("http://localhost:3000/api/categories");
+          const res = await fetch("http://localhost:3000/categories");
           const data = await res.json();
           setCategories(data.sort((a: Category, b: Category) => a.id - b.id));
         } catch (error) {

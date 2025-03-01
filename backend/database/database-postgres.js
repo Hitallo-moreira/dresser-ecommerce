@@ -1,6 +1,6 @@
 const { randomUUID } = require('crypto');
 const bcrypt = require('bcrypt');
-const { sql } = require('../database/connection/db');
+const { sql } = require('../server.js');
 
 class DatabasePostgres {
     async create(user) {
@@ -49,10 +49,10 @@ class DatabasePostgres {
     async deleteResetToken(email) {
         await sql`UPDATE users SET reset_token = NULL WHERE email = ${email}`;
     }
-    async getCategories() {
-        const categories = await sql`SELECT id, name, slug FROM categories ORDER BY id ASC`;
-        return categories;
-    }
+    // async getCategories() {
+    //     const categories = await sql`SELECT id, name, slug FROM categories ORDER BY id ASC`;
+    //     return categories;
+    // }
 }
 
 module.exports = DatabasePostgres;
